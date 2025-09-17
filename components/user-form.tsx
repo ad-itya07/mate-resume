@@ -64,18 +64,21 @@ export function UserForm({ initialData, onDataChange }: UserFormProps) {
     generatePDF(formData)
   }
 
+  const inputFields: { label: string; field: keyof UserDetails; type: string; placeholder: string; icon: string }[] = [
+    { label: "Name", field: "name", type: "text", placeholder: "John Doe", icon: "user" },
+    { label: "Email", field: "email", type: "email", placeholder: "Johndoe@gmail.com", icon: "mail" },
+    { label: "Phone Number", field: "phoneNumber", type: "tel", placeholder: "(220) 222 - 20002", icon: "phone-call" },
+    { label: "Position", field: "position", type: "text", placeholder: "Junior Front end Developer", icon: "position" },
+  ];
+
+
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
       <div className="w-full max-w-xl bg-white rounded-2xl shadow-lg p-10">
         <h1 className="text-4xl font-semibold text-center text-gray-800 mb-10">Add Your Details</h1>
 
         <div className="space-y-6">
-          {[
-            { label: "Name", field: "name", type: "text", placeholder: "John Doe", icon: "user" },
-            { label: "Email", field: "email", type: "email", placeholder: "Johndoe@gmail.com", icon: "mail" },
-            { label: "Phone Number", field: "phoneNumber", type: "tel", placeholder: "(220) 222 - 20002", icon: "phone-call" },
-            { label: "Position", field: "position", type: "text", placeholder: "Junior Front end Developer", icon: "position" },
-          ].map(({ label, field, type, placeholder, icon }) => (
+          {inputFields.map(({ label, field, type, placeholder, icon }) => (
             <div key={field} className="relative">
               <div className="flex items-center bg-gray-50 rounded-xl border border-gray-300 px-4 py-3 focus-within:ring-2 focus-within:ring-green-400 transition">
                 <Icon name={icon} size={20} className="text-gray-500 mr-3" />
